@@ -1,7 +1,7 @@
 name: fetch stations
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
   workflow_dispatch:  # allows running manually from the Actions tab
 jobs:
   fetch-stations:
