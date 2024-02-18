@@ -2,7 +2,7 @@ name: fetch stations
 on:
   schedule:
     - cron: '*/5 * * * *'
-  workflow_dispatch:  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:  # allows running manually from the Actions tab
 jobs:
   fetch-stations:
     runs-on: ubuntu-latest
@@ -11,7 +11,9 @@ jobs:
           STYRSTALL_API_KEY: ${{ secrets.STYRSTALL_API_KEY }}
         run: |
           curl https://data.goteborg.se/SelfServiceBicycleService/v2.0/Stations/$STYRSTALL_API_KEY?format=json
+          --max-time 60
           > stations.json
       - uses: actions/upload-artifact@v4
         with:
           path: stations.json
+          retention-days: ${{ env.RETENTION_DAYS }}
