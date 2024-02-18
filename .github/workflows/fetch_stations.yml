@@ -10,8 +10,8 @@ jobs:
       - env:
           STYRSTALL_API_KEY: ${{ secrets.STYRSTALL_API_KEY }}
         run: |
-          curl https://data.goteborg.se/SelfServiceBicycleService/v2.0/Stations/$STYRSTALL_API_KEY?format=json
-          --max-time 60
+          curl --max-time 60 \
+          https://data.goteborg.se/SelfServiceBicycleService/v2.0/Stations/$STYRSTALL_API_KEY?format=json \
           > stations.json
       - uses: actions/upload-artifact@v4
         with:
