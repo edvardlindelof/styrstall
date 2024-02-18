@@ -20,6 +20,6 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - env:
-          STYRSTALL_API_KEY: ${{ STYRSTALL_API_KEY }}
+          STYRSTALL_API_KEY: ${{ secrets.STYRSTALL_API_KEY }}
         run: |
           curl https://data.goteborg.se/SelfServiceBicycleService/v2.0/Stations/$STYRSTALL_API_KEY?format=json
